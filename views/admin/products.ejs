@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products - Panda Supermarket</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+    <main>
+        <h1>Manage Products</h1>
+        <a href="/admin/products/new" class="btn-add">Add New Product</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                <tr>
+                    <td><%= product.id %></td>
+                    <td><%= product.name %></td>
+                    <td>$<%= product.price %></td>
+                    <td><%= product.category_name %></td>
+                    <td><img src="<%= product.image %>" alt="<%= product.name %>" width="50"></td>
+                    <td class="actions">
+                        <a href="/admin/products/edit/<%= product.id %>" class="btn-edit">Edit</a>
+                        <form action="/admin/products/delete/<%= product.id %>" method="post" class="delete-form">
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Panda Supermarket</p>
+    </footer>
+</body>
+</html>

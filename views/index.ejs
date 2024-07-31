@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="slide"> 
+                    <img src="hero1.jpg" alt="Slide 1">
+                    <div class="caption">Free Gift - Glaceau Olympic Games Towel</div>
+                </div>
+                <div class="slide"> 
+                    <img src="hero2.jpg" alt="Slide 2">
+                    <div class="caption">New & Exclusive Products</div>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+        </section>
+        <section class="products">
+            <h2>Products</h2>
+            <div class="categories">
+                <% categories.forEach(category => { %>
+                    <button class="category-button" data-category-id="<%= category.id %>"><%= category.name %></button>
+                <% }) %>
+            </div>
+            <div class="product-list">
+                <% products.forEach(product => { %>
+                    <div class="product">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <h3><%= product.name %></h3>
+                        <p>$<%= product.price %></p>
+                        <form action="/cart/add" method="post">
+                            <input type="hidden" name="productId" value="<%= product.id %>">
+                            <button type="submit">Add to cart</button>
+                        </form>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

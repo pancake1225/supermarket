@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog - Panda Supermarket</title>
+    <link rel="stylesheet" href="/css/catalog.css">
+</head>
+<body>
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+    <main>
+        <section class="browse-by">
+            <h2>Category</h2>
+        </section>
+        <section class="categories">
+            <% Object.keys(products).forEach(category => { %>
+                <div class="category">
+                    <h3><%= category %></h3>
+                    <ul>
+                        <% products[category].forEach(product => { %>
+                            <li>
+                                <a href="/product/<%= product.id %>"><%= product.name %></a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Panda Supermarket</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Panda Supermarket</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <%- include('partials/navbar') %>
+    </header>
+    <main>
+        <section>
+            <h2>Profile Information</h2>
+            <form action="/profile/update" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="<%= user.username %>">
+                <label for="preferences">Preferences:</label>
+                <textarea id="preferences" name="preferences"><%= user.preferences %></textarea>
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Panda Supermarket</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/css/navbar.css">
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">Panda Supermarket</div>
+        <ul class="navbar-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/catalog">Categories</a></li>
+            <li><a href="#">Promotions</a></li>
+            <li><a href="#">Shopping Lists</a></li>
+            <li><a href="#">Food & Wellness</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <div class="user-actions">
+            <input type="text" placeholder="Search">
+            <% if (user) { %>
+                <div class="user-dropdown">
+                    <span class="user-name">|| <%= user.name %> ||</span>
+                    <div class="dropdown-menu">
+                        <% if (user.isAdmin) { %>
+                            <a href="/admin">Admin Dashboard</a>
+                        <% } %>
+                        <a href="/profile">Profile</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+            <% } else { %>
+                <a href="/login">Login</a>
+            <% } %>
+            <a href="/cart">Cart</a>
+        </div>
+    </div>
+</nav>
